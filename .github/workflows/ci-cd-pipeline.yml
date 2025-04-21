@@ -1,27 +1,27 @@
-name: Data Cleaning Pipeline
+name: Data Cleaning Workflow
 
 on:
   push:
     paths:
-      - 'data/raw_data.csv'  # Jab raw_data.csv update hoga, tab pipeline run hoga
+      - 'data/raw_data.csv'  # Trigger when the raw_data.csv file is updated
 
 jobs:
-  clean-data:
+  clean_data:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+      - name: Checkout repository
         uses: actions/checkout@v2
 
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: '3.8'  # Python version set karen, aap apne requirements ke hisaab se set kar sakte hain
+          python-version: '3.8'
 
       - name: Install dependencies
         run: |
           pip install pandas
 
-      - name: Run data cleaning script
+      - name: Run Data Cleaning Script
         run: |
           python data_cleaning.py
